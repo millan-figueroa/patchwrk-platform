@@ -6,6 +6,10 @@ interface AlumniHeaderProps {
 }
 
 const AlumniHeader: React.FC<AlumniHeaderProps> = ({ username, onNavigateHome }) => {
+  const handleLogout = () => {
+    window.location.href = '/';
+  };
+
   return (
     <div className="w-full bg-blue-600 shadow-md">
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -28,7 +32,10 @@ const AlumniHeader: React.FC<AlumniHeaderProps> = ({ username, onNavigateHome })
                 Home
               </button>
             )}
-            <button className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700">
+            <button 
+              onClick={handleLogout}
+              className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
+            >
               Logout
             </button>
           </div>

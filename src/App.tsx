@@ -1,6 +1,7 @@
 import "./index.css";
 import Alumni from "./pages/Alumni/alumni";
 import LandingPage from "./pages/LandingPage";
+import Learner from "./pages/Learner/learner";
 import StudentSignup from "./pages/signup/StudentSignup";
 import StudentPreferences from "./pages/signup/StudentPreferences";
 import { useState } from "react";
@@ -12,6 +13,9 @@ function App() {
   const isAlumniRoute = currentPath.startsWith("/alumni-");
   const isLandingPreview = currentPath === "/landing-preview";
 
+  // Check if current route is learner page
+  const isLearnerRoute = currentPath.startsWith("/learner-");
+
   // Extract username from alumni route
   const getAlumniUsername = (): string | undefined => {
     if (isAlumniRoute) {
@@ -20,46 +24,26 @@ function App() {
     return undefined;
   };
 
-  // mult-step signup state
-  // signup form collects account info - app moves to preferences step
-  const [step, setStep] = useState<
-    "landing" | "signup" | "preferences" | "dashboard"
-  >(isLandingPreview ? "landing" : isAlumniRoute ? "dashboard" : "landing");
-  const [studentData, setStudentData] = useState<any>(null);
-
-  const goToPreferences = (accountInfo: any) => {
-    setStudentData(accountInfo);
-    setStep("preferences");
-  };
-
-  const goToDashboard = (preferences: any) => {
-    setStudentData({ ...studentData, ...preferences });
-    setStep("dashboard");
+  // Extract username from learner route
+  const getLearnerUsername = (): string | undefined => {
+    if (isLearnerRoute) {
+      return currentPath.replace("/learner-", "").replace(/-/g, " ");
+    }
+    return undefined;
   };
 
   console.log("current path", currentPath);
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {step === "landing" ? (
+      {isLandingPreview ? (
         <LandingPage />
-      ) : step === "signup" ? (
-        <StudentSignup onNext={goToPreferences} />
-      ) : step === "preferences" ? (
-        <StudentPreferences initialData={studentData} onNext={goToDashboard} />
-      ) : step === "dashboard" ? (
-        <div>
-          <h1>Student Dashboard (Demo)</h1>
-          <pre>{JSON.stringify(studentData, null, 2)}</pre>
-        </div>
       ) : isAlumniRoute ? (
         <Alumni username={getAlumniUsername()} />
+      ) : isLearnerRoute ? (
+        <Learner username={getLearnerUsername()} />
       ) : (
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h1>AI Learning Platform</h1>
-            <p>Try: /alumni-jeevi</p>
-          </div>
-        </div>
+        <LandingPage />
       )}
     </div>
   );

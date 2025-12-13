@@ -1,0 +1,71 @@
+{
+  "predefinedQuestions": [
+    {
+      "id": 1,
+      "question": "How does useState work in React?",
+      "category": "React"
+    },
+    {
+      "id": 2,
+      "question": "Explain the difference between let and const in JavaScript",
+      "category": "JavaScript"
+    },
+    {
+      "id": 3,
+      "question": "What are the SOLID principles in programming?",
+      "category": "Programming"
+    },
+    {
+      "id": 4,
+      "question": "How do I handle async operations in JavaScript?",
+      "category": "JavaScript"
+    },
+    {
+      "id": 5,
+      "question": "What is the difference between SQL and NoSQL databases?",
+      "category": "Database"
+    }
+  ],
+  "mockResponses": {
+    "react": [
+      "useState is a React Hook that allows you to add state to functional components. It returns an array with the current state value and a function to update it.",
+      "Great question about React! useState is fundamental for managing component state. Would you like me to show you some examples?",
+      "useState lets you store and update data in your React components. The syntax is: const [state, setState] = useState(initialValue);"
+    ],
+    "javascript": [
+      "JavaScript is a versatile programming language! What specific aspect would you like to learn about?",
+      "Let me help you with JavaScript concepts. Can you tell me more about what you're trying to understand?",
+      "JavaScript has many powerful features. I'd be happy to explain any concept step by step!"
+    ],
+    "programming": [
+      "Programming concepts can be tricky at first, but with practice they become clearer. What would you like to focus on?",
+      "I'm here to help you understand programming concepts! Feel free to ask about algorithms, data structures, or any other topic.",
+      "Programming is all about problem-solving. Let's break down your question into smaller parts."
+    ],
+    "database": [
+      "Databases are essential for storing and managing data. SQL databases are relational, while NoSQL databases are more flexible in structure.",
+      "Great question about databases! The choice between SQL and NoSQL depends on your specific use case and data requirements.",
+      "Database design is crucial for application performance. Would you like to know more about specific database types?"
+    ],
+    "default": [
+      "That's an interesting question! Let me help you understand this concept better.",
+      "I'd be happy to assist you with that! Can you provide more details about what you're trying to learn?",
+      "Great question! Learning is all about asking the right questions. Let me break this down for you.",
+      "I'm here to help you learn! What specific aspect of this topic would you like to explore?",
+      "That's a common question many learners have. Let me explain it in a simple way."
+    ]
+  },
+  "greetingMessages": [
+    "Hi there! I'm your AI study assistant. How can I help you learn today?",
+    "Hello! Ready to dive into some learning? What topic interests you?",
+    "Welcome! I'm here to help you understand any concept. What would you like to explore?",
+    "Hey! I'm your personal AI tutor. What questions do you have for me today?"
+  ],
+  "encouragementMessages": [
+    "You're doing great! Keep asking questions - that's how we learn best! 🌟",
+    "Excellent question! Curiosity is the key to learning. What else can I help you with?",
+    "That's a thoughtful question! I can see you're really thinking deeply about this topic.",
+    "Keep up the great work! Every question brings you closer to mastering the concept.",
+    "I love your enthusiasm for learning! What would you like to explore next?"
+  ]
+}

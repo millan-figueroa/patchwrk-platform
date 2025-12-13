@@ -1,36 +1,71 @@
 {
   "alumni": {
+    "defaultTab": "dashboard",
     "tabs": [
       {
-        "key": "dashboard",
+        "id": "dashboard",
         "label": "Dashboard",
         "icon": "🏠"
       },
       {
-        "key": "mentoring",
+        "id": "mentoring",
         "label": "My Mentees",
         "icon": "👥"
       },
       {
-        "key": "schedule",
+        "id": "schedule",
         "label": "Schedule",
         "icon": "📅"
       },
       {
-        "key": "resources",
+        "id": "resources",
         "label": "Resources",
         "icon": "📚"
       },
       {
-        "key": "profile",
+        "id": "profile",
         "label": "Profile",
         "icon": "⚙️"
       }
     ],
-    "defaultTab": "dashboard",
     "welcomeMessage": {
       "title": "Welcome",
       "description": "Select a tab to get started."
+    }
+  },
+
+  "learner": {
+    "defaultTab": "dashboard",
+    "tabs": [
+      {
+        "id": "dashboard",
+        "label": "Dashboard",
+        "icon": "🏠"
+      },
+      {
+        "id": "help",
+        "label": "Get Help",
+        "icon": "💬"
+      },
+      {
+        "id": "schedule",
+        "label": "Schedule",
+        "icon": "📅"
+      },
+      {
+        "id": "resources",
+        "label": "Resources",
+        "icon": "📚"
+      },
+      {
+        "id": "profile",
+        "label": "Profile",
+        "icon": "⚙️"
+      }
+    ],
+    "welcomeMessage": {
+      "title": "Welcome, Learner",
+      "description": "Request help, track progress, and learn smarter."
     }
   }
 }

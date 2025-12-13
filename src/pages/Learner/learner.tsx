@@ -1,114 +1,70 @@
-import { useState } from "react";
+
+import React, { useState } from "react";
+import NavBar from "../../components/common/NavBar";
+import navigationConfig from "../../data/navigationConfig.json";
+
+import StudentDash from "../../pages/Learner/LearnersTab/StudentDash";
+import Help from "../../pages/Learner/LearnersTab/Help";
+import StudentSchedule from "./LearnersTab/StudentSchedule";
+import StudentProfile from "./LearnersTab/StudentProfile";
+import Resources from "./LearnersTab/Resources";
+import LearnerHeader from "./LearnerHeader";
+
+
+
 
 interface LearnerProps {
   username?: string;
 }
 
-type HelpRequest = {
-  id: string;
-  topic: string;
-  details: string;
-  status: "open" | "matched" | "closed";
-};
-
 const Learner: React.FC<LearnerProps> = ({ username }) => {
-  const [topic, setTopic] = useState("");
-  const [details, setDetails] = useState("");
-  const [requests, setRequests] = useState<HelpRequest[]>([]);
+  const [activeTab, setActiveTab] = useState(
+    navigationConfig.learner.defaultTab
+  );
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);  
 
-  function submitRequest() {
-    if (!topic.trim()) return;
-
-    const newRequest: HelpRequest = {
-      id: crypto.randomUUID(),
-      topic,
-      details,
-      status: "open",
-    };
-
-    setRequests((prev) => [newRequest, ...prev]);
-    setTopic("");
-    setDetails("");
-  }
-
-  const displayName = username ? username.charAt(0).toUpperCase() + username.slice(1) : "Learner";
+  const renderContent = () => {
+    switch (activeTab) {
+      case "dashboard":
+        return <StudentDash />;
+      case "help":
+        return <Help />;
+      case "schedule":
+        return <StudentSchedule />;
+      case "resources":
+        return <Resources />;
+      case "profile":
+        return <StudentProfile />;
+      default:
+        return (
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-2xl font-bold mb-4">
+              {navigationConfig.learner.welcomeMessage.title}
+            </h2>
+            <p>{navigationConfig.learner.welcomeMessage.description}</p>
+          </div>
+        );
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-50 w-full">
       {/* Header */}
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold">Welcome, {displayName}!</h1>
-        <p className="text-gray-600">
-          Ask for help, track requests, and learn smarter.
-        </p>
-      </header>
+      <LearnerHeader username={username} />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Help Request Form */}
-        <section className="md:col-span-2 bg-white rounded-xl shadow p-4">
-          <h2 className="text-lg font-semibold mb-3">Request Help</h2>
+      {/* Layout */}
+      <div className="flex w-full">
+        <NavBar
+          tabs={navigationConfig.learner.tabs}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          isCollapsed={isNavCollapsed}
+          onToggleCollapse={() => setIsNavCollapsed(!isNavCollapsed)}
+        />
 
-          <input
-            className="w-full border rounded-lg p-2 mb-3"
-            placeholder="Topic (e.g. React state)"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-          />
-
-          <textarea
-            className="w-full border rounded-lg p-2 mb-3"
-            rows={3}
-            placeholder="Describe what you're stuck on..."
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-          />
-
-          <button
-            onClick={submitRequest}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-          >
-            Submit Request
-          </button>
-        </section>
-
-        {/* AI Chat Placeholder */}
-       {/* <section className="bg-white rounded-xl shadow p-4">
-          <h2 className="text-lg font-semibold mb-2">AI Study Assistant</h2>
-          <p className="text-gray-600 text-sm">
-            Chat with AI for hints, explanations, and study help.
-          </p>
-
-          <div className="mt-4 h-48 flex items-center justify-center border rounded-lg text-gray-400">
-            Chat UI coming soon
-          </div>
-        </section> */}
+        {/* Main Content */}
+        <div className="flex-1 w-full p-6">{renderContent()}</div>
       </div>
-
-      {/* Active Requests */}
-      <section className="mt-6 bg-white rounded-xl shadow p-4">
-        <h2 className="text-lg font-semibold mb-3">My Requests</h2>
-
-        {requests.length === 0 ? (
-          <p className="text-gray-500">No requests yet.</p>
-        ) : (
-          <ul className="space-y-2">
-            {requests.map((req) => (
-              <li
-                key={req.id}
-                className="border rounded-lg p-3 flex justify-between"
-              >
-                <div>
-                  <p className="font-medium">{req.topic}</p>
-                  <p className="text-sm text-gray-600">{req.details}</p>
-                </div>
-                <span className="text-sm text-blue-600 capitalize">
-                  {req.status}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </div>
   );
 };

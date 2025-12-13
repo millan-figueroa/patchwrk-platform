@@ -7,7 +7,7 @@ type HelpRequest = {
   status: "open" | "matched" | "closed";
 };
 
-export default function LearnerDash() {
+export default function StudentDash() {
   const [topic, setTopic] = useState("");
   const [details, setDetails] = useState("");
   const [requests, setRequests] = useState<HelpRequest[]>([]);
@@ -16,7 +16,7 @@ export default function LearnerDash() {
     if (!topic.trim()) return;
 
     const newRequest: HelpRequest = {
-      id: crypto.randomUUID(),
+      id: Date.now().toString(),
       topic,
       details,
       status: "open",
@@ -31,9 +31,9 @@ export default function LearnerDash() {
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold">Learner Dashboard</h1>
+        <h1 className="text-2xl font-bold">Student Dashboard</h1>
         <p className="text-gray-600">
-          Ask for help, track requests, and learn smarter.
+          Request help, track your questions, and keep learning.
         </p>
       </header>
 
@@ -63,6 +63,20 @@ export default function LearnerDash() {
           >
             Submit Request
           </button>
+        </section>
+
+        {/* Quick Tips / Placeholder */}
+        <section className="bg-white rounded-xl shadow p-4">
+          <h2 className="text-lg font-semibold mb-2">Study Tips</h2>
+          <p className="text-gray-600 text-sm">
+            Be specific in your request to get faster, better help.
+          </p>
+
+          <div className="mt-4 text-sm text-gray-500">
+            💡 Example:  
+            <br />
+            “I don’t understand how `useEffect` dependencies work.”
+          </div>
         </section>
       </div>
 

@@ -1,6 +1,9 @@
 import "./index.css";
 import Alumni from "./pages/Alumni/alumni";
 import LandingPage from "./pages/LandingPage";
+import StudentSignup from "./pages/signup/StudentSignup";
+import StudentPreferences from "./pages/signup/StudentPreferences";
+import { useState } from "react";
 
 function App() {
   const currentPath = window.location.pathname;
@@ -17,11 +20,37 @@ function App() {
     return undefined;
   };
 
+  // mult-step signup state
+  // signup form collects account info - app moves to preferences step
+  const [step, setStep] = useState<
+    "landing" | "signup" | "preferences" | "dashboard"
+  >(isLandingPreview ? "landing" : isAlumniRoute ? "dashboard" : "landing");
+  const [studentData, setStudentData] = useState<any>(null);
+
+  const goToPreferences = (accountInfo: any) => {
+    setStudentData(accountInfo);
+    setStep("preferences");
+  };
+
+  const goToDashboard = (preferences: any) => {
+    setStudentData({ ...studentData, ...preferences });
+    setStep("dashboard");
+  };
+
   console.log("current path", currentPath);
   return (
     <div className="min-h-screen bg-gray-50">
-      {isLandingPreview ? (
+      {step === "landing" ? (
         <LandingPage />
+      ) : step === "signup" ? (
+        <StudentSignup onNext={goToPreferences} />
+      ) : step === "preferences" ? (
+        <StudentPreferences initialData={studentData} onNext={goToDashboard} />
+      ) : step === "dashboard" ? (
+        <div>
+          <h1>Student Dashboard (Demo)</h1>
+          <pre>{JSON.stringify(studentData, null, 2)}</pre>
+        </div>
       ) : isAlumniRoute ? (
         <Alumni username={getAlumniUsername()} />
       ) : (

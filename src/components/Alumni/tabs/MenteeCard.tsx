@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Mentee } from '../types';
-import CommunicationHub from './CommunicationHub';
 
 interface MenteeCardProps {
   mentee: Mentee;
+  onMessage?: (mentee: Mentee) => void;
 }
 
-const MenteeCard: React.FC<MenteeCardProps> = ({ mentee }) => {
-  const [isCommunicationOpen, setIsCommunicationOpen] = useState(false);
+const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Active': return 'bg-green-100 text-green-800';
@@ -32,7 +31,9 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee }) => {
   };
 
   const handleMessage = () => {
-    setIsCommunicationOpen(true);
+    if (onMessage) {
+      onMessage(mentee);
+    }
   };
 
   return (
@@ -86,13 +87,6 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee }) => {
           </div>
         </div>
       </div>
-      
-      {/* Communication Hub Modal */}
-      <CommunicationHub 
-        mentee={mentee}
-        isOpen={isCommunicationOpen}
-        onClose={() => setIsCommunicationOpen(false)}
-      />
     </div>
   );
 };

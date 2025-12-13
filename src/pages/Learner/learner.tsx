@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+interface LearnerProps {
+  username?: string;
+}
+
 type HelpRequest = {
   id: string;
   topic: string;
@@ -7,7 +11,7 @@ type HelpRequest = {
   status: "open" | "matched" | "closed";
 };
 
-export default function LearnerDash() {
+const Learner: React.FC<LearnerProps> = ({ username }) => {
   const [topic, setTopic] = useState("");
   const [details, setDetails] = useState("");
   const [requests, setRequests] = useState<HelpRequest[]>([]);
@@ -27,11 +31,13 @@ export default function LearnerDash() {
     setDetails("");
   }
 
+  const displayName = username ? username.charAt(0).toUpperCase() + username.slice(1) : "Learner";
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold">Learner Dashboard</h1>
+        <h1 className="text-2xl font-bold">Welcome, {displayName}!</h1>
         <p className="text-gray-600">
           Ask for help, track requests, and learn smarter.
         </p>
@@ -105,4 +111,6 @@ export default function LearnerDash() {
       </section>
     </div>
   );
-}
+};
+
+export default Learner;

@@ -1,0 +1,36 @@
+{
+  "alumni": {
+    "tabs": [
+      {
+        "key": "dashboard",
+        "label": "Dashboard",
+        "icon": "🏠"
+      },
+      {
+        "key": "mentoring",
+        "label": "My Mentees",
+        "icon": "👥"
+      },
+      {
+        "key": "schedule",
+        "label": "Schedule",
+        "icon": "📅"
+      },
+      {
+        "key": "resources",
+        "label": "Resources",
+        "icon": "📚"
+      },
+      {
+        "key": "profile",
+        "label": "Profile",
+        "icon": "⚙️"
+      }
+    ],
+    "defaultTab": "dashboard",
+    "welcomeMessage": {
+      "title": "Welcome",
+      "description": "Select a tab to get started."
+    }
+  }
+}

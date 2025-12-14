@@ -13,6 +13,8 @@ import AlumniSignup, {
 } from "./pages/signup/AlumniSignup";
 import AlumniPreferences from "./pages/signup/AlumniPreferences";
 
+import AdminDashboard from "./pages/Admin_page/admin";
+
 const STORAGE_KEY = "learner-registration";
 
 type Registration = {
@@ -171,6 +173,9 @@ export default function App() {
 
         {/* alumni dashboard */}
         <Route path="/alumni/dashboard" element={<Alumni />} />
+
+        {/* aadmin dashboard */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

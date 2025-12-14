@@ -9,7 +9,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-100 via-indigo-50 to-purple-200">
       {/* full-width white hero section */}
-      <section className="bg-slate-50">
+      <section className="bg-white">
         {/* full-width hero image */}
         <img
           src={heroImage}

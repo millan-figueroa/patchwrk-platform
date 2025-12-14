@@ -50,9 +50,9 @@ const NavBar: React.FC<NavBarProps> = ({
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => onTabChange(tab.id)}
+            onClick={() => tab.key && onTabChange(tab.key)}
             className={`w-full flex items-center px-6 py-3 text-left hover:bg-gray-50 transition-colors duration-200 ${
-              activeTab === tab.id
+              activeTab === tab.key
                 ? "bg-blue-50 border-r-4 border-blue-500 text-blue-700 font-medium"
                 : "text-gray-600 hover:text-gray-900"
             }`}

@@ -9,7 +9,7 @@ import StudentSchedule from "./LearnersTab/StudentSchedule";
 import StudentProfile from "./LearnersTab/StudentProfile";
 import Resources from "./LearnersTab/Resources";
 import LearnerHeader from "./LearnerHeader";
-
+import AIChatAssistant from "../../components/common/AIChatAssistant";
 
 
 
@@ -55,7 +55,7 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
       {/* Layout */}
       <div className="flex w-full">
        <NavBar
-          tabs={tabs}
+          tabs={navigationConfig.learner.tabs}
           activeTab={activeTab}
           onTabChange={setActiveTab}
           isCollapsed={isNavCollapsed}
@@ -64,6 +64,12 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
 
         {/* Main Content */}
         <div className="flex-1 w-full p-6">{renderContent()}</div>
+      </div>
+
+      <div className="lg:col-span-1">
+        <div className="sticky top-6">
+            <AIChatAssistant />
+        </div>
       </div>
     </div>
   );

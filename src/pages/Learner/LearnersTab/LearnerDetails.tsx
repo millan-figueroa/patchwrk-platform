@@ -133,7 +133,7 @@ const TopicItem = ({ topic }: { topic: StudentTopic }) => {
 };
 
 // Main Student Profile Component
-const StudentProfile = ({ student }: { student: StudentProps }) => {
+export const LearnerDetails = ({ student }: { student: StudentProps }) => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white">
       <div className="mb-6">
@@ -196,6 +196,6 @@ const StudentProfile = ({ student }: { student: StudentProps }) => {
 };
 
 // Export component with test data
-export default function App() {
-  return <StudentProfile student={testStudent1} />;
-}
+// export default function App() {
+//   return <LearnerDetails student={testStudent1} />;
+// }

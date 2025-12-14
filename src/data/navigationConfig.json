@@ -26,6 +26,11 @@
         "key": "profile",
         "label": "Profile",
         "icon": "⚙️"
+      },
+      {
+        "key": "details",
+        "label": "Tutor Details",
+        "icon": "🗃️"
       }
     ],
     "welcomeMessage": {
@@ -61,6 +66,11 @@
         "key": "profile",
         "label": "Profile",
         "icon": "⚙️"
+      },
+      {
+        "key": "details",
+        "label": "Learner Details",
+        "icon": "🗃️"
       }
     ],
     "welcomeMessage": {

@@ -1,66 +1,86 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import heroImage from "../assets/hero1.jpg";
 
-const LandingPage: React.FC = () => {
-  // this hook lets us move to a different page without reloading the browser
+export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            AI Learning Platform
+    <div className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-100">
+      {/* full-width white hero section */}
+      <section className="bg-white">
+        {/* full-width hero image */}
+        <img
+          src={heroImage}
+          alt="Students learning together"
+          className="w-full h-80 sm:h-105 md:h-130 object-cover"
+        />
+
+        {/* centered hero content */}
+        <div className="max-w-6xl mx-auto px-6 py-14 text-center">
+          <h1 className="text-5xl font-bold text-slate-800 mb-6">
+            Learn Faster. Teach Smarter.
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Connect with mentors, accelerate your learning journey, and unlock
-            your potential with AI-powered education.
+
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+            A community-driven learning platform connecting learners with alumni
+            mentors through structured guidance and real-world experience.
+          </p>
+
+          {/* primary ctas */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => navigate("/signup/account")}
+              className="px-8 py-4 rounded-xl text-lg font-semibold text-white bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 transition"
+            >
+              Register as a Learner
+            </button>
+
+            <button
+              onClick={() => navigate("/alumni/account")}
+              className="px-8 py-4 rounded-xl text-lg font-semibold text-indigo-700 bg-white border border-indigo-200 hover:bg-indigo-50 transition"
+            >
+              Register as an Alumni
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* gap beneath the hero */}
+      <div className="h-10 sm:h-14" />
+
+      {/* info sections */}
+      <div className="max-w-6xl mx-auto px-6 pb-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-md p-8">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            For Learners
+          </h3>
+          <p className="text-gray-600">
+            Get matched with alumni mentors, set learning goals, and move at a
+            pace that works for your schedule.
           </p>
         </div>
 
-        {/* Registration Buttons */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
-          <button
-            // this sends the user to the learner signup page
-            onClick={() => navigate("/signup/account")}
-            className="group relative bg-linear-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            <div className="flex items-center space-x-2">
-              <span>📚</span>
-              <span>Register as a Learner</span>
-            </div>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-200"></div>
-          </button>
-
-          <button
-            // this sends the user to the alumni signup page
-            onClick={() => navigate("/alumni/account")}
-            className="group relative bg-linear-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            <div className="flex items-center space-x-2">
-              <span>🎓</span>
-              <span>Register as a Alumni</span>
-            </div>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-200"></div>
-          </button>
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-md p-8">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            For Alumni
+          </h3>
+          <p className="text-gray-600">
+            Give back by mentoring learners, sharing industry experience, and
+            helping the next generation grow.
+          </p>
         </div>
 
-        {/* Login Link */}
-        <div className="text-center">
+        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-md p-8">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            Structured Learning
+          </h3>
           <p className="text-gray-600">
-            Already have an account?{" "}
-            <span
-              // this would go to a login page if you add that route later
-              onClick={() => navigate("/login")}
-              className="text-blue-600 hover:text-blue-800 font-semibold cursor-pointer hover:underline transition-colors duration-200"
-            >
-              Log in
-            </span>
+            Clear onboarding, preferences-based matching, and dashboards built
+            for focus and accountability.
           </p>
         </div>
       </div>
     </div>
   );
-};
-
-export default LandingPage;
+}

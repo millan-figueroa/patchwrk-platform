@@ -1,5 +1,5 @@
 import "./index.css";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Learner from "./pages/Learner/learner";
@@ -7,27 +7,110 @@ import LearnerSignup, {
   type LearnerSignupForm,
 } from "./pages/signup/LearnerSignup";
 import LearnerPreferences from "./pages/signup/LearnerPreferences";
+import Alumni from "./pages/Alumni";
+import AlumniSignup, {
+  type AlumniSignupForm,
+} from "./pages/signup/AlumniSignup";
+import AlumniPreferences from "./pages/signup/AlumniPreferences";
+
+const STORAGE_KEY = "learner-registration";
 
 type Registration = {
   account?: LearnerSignupForm;
+  // not saving preferences for demo, but we can still store them
+  preferences?: any;
+};
+
+// this is separate storage for alumni signup flow
+const ALUMNI_STORAGE_KEY = "alumni-registration";
+
+type AlumniRegistration = {
+  account?: AlumniSignupForm;
+  // not saving preferences for demo, but we can still store them
+  preferences?: any;
+};
+
+const loadRegistration = (): Registration => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? (JSON.parse(stored) as Registration) : {};
+  } catch {
+    return {};
+  }
+};
+
+const persistRegistration = (data: Registration) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+};
+
+// this loads saved alumni signup data (optional, for demo consistency)
+const loadAlumniRegistration = (): AlumniRegistration => {
+  try {
+    const stored = localStorage.getItem(ALUMNI_STORAGE_KEY);
+    return stored ? (JSON.parse(stored) as AlumniRegistration) : {};
+  } catch {
+    return {};
+  }
+};
+
+// this saves alumni signup data (optional, for demo consistency)
+const persistAlumniRegistration = (data: AlumniRegistration) => {
+  localStorage.setItem(ALUMNI_STORAGE_KEY, JSON.stringify(data));
 };
 
 export default function App() {
   const navigate = useNavigate();
-  const [registration, setRegistration] = useState<Registration>({});
 
+  // this state stores learner signup progress
+  const [registration, setRegistration] = useState<Registration>(() =>
+    loadRegistration()
+  );
+
+  // this state stores alumni signup progress
+  const [alumniRegistration, setAlumniRegistration] =
+    useState<AlumniRegistration>(() => loadAlumniRegistration());
+
+  // this keeps learner data in localstorage so refresh does not wipe it
+  useEffect(() => {
+    persistRegistration(registration);
+  }, [registration]);
+
+  // this keeps alumni data in localstorage so refresh does not wipe it
+  useEffect(() => {
+    persistAlumniRegistration(alumniRegistration);
+  }, [alumniRegistration]);
+
+  // this is used to show a name on the dashboard (optional)
   const displayName = useMemo(() => {
     const name = registration.account?.fullName?.trim();
     return name ? name : undefined;
   }, [registration.account?.fullName]);
 
+  // this runs after learner signup step 1 and routes to learner preferences
   const handleAccountSubmit = (data: LearnerSignupForm) => {
-    setRegistration({ account: data });
+    setRegistration((prev) => ({ ...prev, account: data }));
     navigate("/signup/preferences");
   };
 
-  const handlePreferencesNext = (_payload: any) => {
+  // this runs after alumni signup step 1 and routes to alumni preferences
+  const handleAlumniAccountSubmit = (data: AlumniSignupForm) => {
+    setAlumniRegistration((prev) => ({ ...prev, account: data }));
+    navigate("/alumni/preferences");
+  };
+
+  // matches LearnerPreferences: onNext(preferences: any)
+  // this runs after learner preferences and routes to dashboard
+  const handlePreferencesSubmit = (preferences: any) => {
+    // keep for demo debug
+    setRegistration((prev) => ({ ...prev, preferences }));
     navigate("/dashboard");
+  };
+
+  // this runs after alumni preferences and routes to dashboard
+  // for demo, we store preferences but you can remove it later
+  const handleAlumniPreferencesSubmit = (preferences: any) => {
+    setAlumniRegistration((prev) => ({ ...prev, preferences }));
+    navigate("/alumni/dashboard");
   };
 
   return (
@@ -35,23 +118,24 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
 
+        {/* optional shortcut */}
         <Route
           path="/signup"
           element={<Navigate to="/signup/account" replace />}
         />
-
+        {/* links to learner signup page */}
         <Route
           path="/signup/account"
           element={<LearnerSignup onNext={handleAccountSubmit} />}
         />
-
+        {/* links to learner preferences page */}
         <Route
           path="/signup/preferences"
           element={
             registration.account ? (
               <LearnerPreferences
                 learnerData={registration.account}
-                onNext={handlePreferencesNext}
+                onNext={handlePreferencesSubmit}
               />
             ) : (
               <Navigate to="/signup/account" replace />
@@ -59,7 +143,34 @@ export default function App() {
           }
         />
 
+        {/* alumni signup step 1 */}
+        <Route
+          path="/alumni/account"
+          element={<AlumniSignup onNext={handleAlumniAccountSubmit} />}
+        />
+
+        {/* alumni preferences step (guarded so users cannot skip step 1) */}
+        <Route
+          path="/alumni/preferences"
+          element={
+            alumniRegistration.account ? (
+              // reusing the learner preferences page for demo
+              // it collects dropdowns and returns a preferences object on next
+              <AlumniPreferences
+                alumniData={alumniRegistration.account}
+                onNext={handleAlumniPreferencesSubmit}
+              />
+            ) : (
+              <Navigate to="/alumni/account" replace />
+            )
+          }
+        />
+
+        {/* learner dashboard */}
         <Route path="/dashboard" element={<Learner username={displayName} />} />
+
+        {/* alumni dashboard */}
+        <Route path="/alumni/dashboard" element={<Alumni />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

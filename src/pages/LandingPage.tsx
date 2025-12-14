@@ -18,7 +18,7 @@ const LandingPage: React.FC = () => {
         {/* Registration Buttons */}
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center mb-12">
           <button
-            onClick={() => (window.location.href = "/learner-student")}
+            onClick={() => (window.location.href = "/signup/learner-signup")}
             className="group relative bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             <div className="flex items-center space-x-2">

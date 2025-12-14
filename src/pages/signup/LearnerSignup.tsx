@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-type StudentSignupForm = {
+export type LearnerSignupForm = {
   fullName: string;
   email: string;
   password: string;
@@ -8,10 +8,14 @@ type StudentSignupForm = {
   cohort?: string;
 };
 
-type FieldErrors = Partial<Record<keyof StudentSignupForm, string>>;
+interface Props {
+  onNext: (data: LearnerSignupForm) => void;
+}
 
-export default function StudentSignup() {
-  const [form, setForm] = useState<StudentSignupForm>({
+type FieldErrors = Partial<Record<keyof LearnerSignupForm, string>>;
+
+export default function LearnerSignup({ onNext }: Props) {
+  const [form, setForm] = useState<LearnerSignupForm>({
     fullName: "",
     email: "",
     password: "",
@@ -27,7 +31,7 @@ export default function StudentSignup() {
   const isValidEmail = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
-  const validate = (data: StudentSignupForm): FieldErrors => {
+  const validate = (data: LearnerSignupForm): FieldErrors => {
     const next: FieldErrors = {};
 
     if (!data.fullName.trim()) next.fullName = "Full name is required.";
@@ -64,6 +68,8 @@ export default function StudentSignup() {
     const validationErrors = validate(form);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
+
+    onNext(form);
   };
 
   // async function onSubmit(e: React.FormEvent) {
@@ -78,7 +84,7 @@ export default function StudentSignup() {
   //   try {
   //     // ✅ Replace this with your real endpoint later
   //     // Example:
-  //     // const res = await fetch("/api/auth/signup-student", { ... })
+  //     // const res = await fetch("/api/auth/signup-Learner", { ... })
 
   //     await new Promise((r) => setTimeout(r, 600)); // fake delay
 
@@ -100,7 +106,7 @@ export default function StudentSignup() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-2xl shadow p-6">
-        <h1 className="text-2xl font-bold">Student Sign Up</h1>
+        <h1 className="text-2xl font-bold">Learner Sign Up</h1>
         <form onSubmit={onSubmit} className="mt-5 space-y-4">
           <div>
             <label>Full Name</label>

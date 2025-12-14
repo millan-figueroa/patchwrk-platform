@@ -17,7 +17,12 @@ const Alumni: React.FC<AlumniProps> = ({ username }) => {
   const [activeTab, setActiveTab] = useState(navigationConfig.alumni.defaultTab);
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
 
-  const tabs: Tab[] = navigationConfig.alumni.tabs;
+  const tabs: Tab[] = navigationConfig.alumni.tabs.map((t: any) => ({
+    id: t.id ?? t.key,   // convert key → id
+    label: t.label,
+    icon: t.icon,
+  }));
+
 
   const renderContent = () => {
     switch (activeTab) {

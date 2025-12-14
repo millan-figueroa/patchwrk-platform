@@ -10,7 +10,9 @@ import StudentProfile from "./LearnersTab/StudentProfile";
 import Resources from "./LearnersTab/Resources";
 import LearnerHeader from "./LearnerHeader";
 import AIChatAssistant from "../../components/common/AIChatAssistant";
+import { LearnerDetails } from "./LearnersTab/LearnerDetails";
 
+import { testStudent1 } from "../../components/types/user-types";
 
 
 interface LearnerProps {
@@ -35,6 +37,8 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
         return <Resources />;
       case "profile":
         return <StudentProfile />;
+      case "details":
+        return <LearnerDetails student={testStudent1}/>;
       default:
         return (
           <div className="bg-white p-6 rounded-lg shadow">

@@ -2,12 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import heroImage from "../assets/hero1.jpg";
 import { GraduationCap, Users, LayoutList } from "lucide-react";
+import LandingNav from "../components/common/LandingNav";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-100 via-indigo-50 to-purple-200">
+      <LandingNav />
+
       {/* full-width white hero section */}
       <section className="bg-white">
         {/* full-width hero image */}

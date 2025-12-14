@@ -7,9 +7,11 @@ import LearnerSignup, {
   type LearnerSignupForm,
 } from "./pages/signup/LearnerSignup";
 import LearnerPreferences from "./pages/signup/LearnerPreferences";
+import Alumni from "./pages/Alumni";
 import AlumniSignup, {
   type AlumniSignupForm,
 } from "./pages/signup/AlumniSignup";
+import AlumniPreferences from "./pages/signup/AlumniPreferences";
 
 const STORAGE_KEY = "learner-registration";
 
@@ -90,6 +92,12 @@ export default function App() {
     navigate("/signup/preferences");
   };
 
+  // this runs after alumni signup step 1 and routes to alumni preferences
+  const handleAlumniAccountSubmit = (data: AlumniSignupForm) => {
+    setAlumniRegistration((prev) => ({ ...prev, account: data }));
+    navigate("/alumni/preferences");
+  };
+
   // matches LearnerPreferences: onNext(preferences: any)
   // this runs after learner preferences and routes to dashboard
   const handlePreferencesSubmit = (preferences: any) => {
@@ -98,17 +106,11 @@ export default function App() {
     navigate("/dashboard");
   };
 
-  // this runs after alumni signup step 1 and routes to alumni preferences
-  const handleAlumniAccountSubmit = (data: AlumniSignupForm) => {
-    setAlumniRegistration((prev) => ({ ...prev, account: data }));
-    navigate("/alumni/preferences");
-  };
-
   // this runs after alumni preferences and routes to dashboard
   // for demo, we store preferences but you can remove it later
   const handleAlumniPreferencesSubmit = (preferences: any) => {
     setAlumniRegistration((prev) => ({ ...prev, preferences }));
-    navigate("/dashboard");
+    navigate("/alumni/dashboard");
   };
 
   return (
@@ -121,12 +123,12 @@ export default function App() {
           path="/signup"
           element={<Navigate to="/signup/account" replace />}
         />
-
+        {/* links to learner signup page */}
         <Route
           path="/signup/account"
           element={<LearnerSignup onNext={handleAccountSubmit} />}
         />
-
+        {/* links to learner preferences page */}
         <Route
           path="/signup/preferences"
           element={
@@ -154,8 +156,8 @@ export default function App() {
             alumniRegistration.account ? (
               // reusing the learner preferences page for demo
               // it collects dropdowns and returns a preferences object on next
-              <LearnerPreferences
-                learnerData={alumniRegistration.account as any}
+              <AlumniPreferences
+                alumniData={alumniRegistration.account}
                 onNext={handleAlumniPreferencesSubmit}
               />
             ) : (
@@ -164,7 +166,11 @@ export default function App() {
           }
         />
 
+        {/* learner dashboard */}
         <Route path="/dashboard" element={<Learner username={displayName} />} />
+
+        {/* alumni dashboard */}
+        <Route path="/alumni/dashboard" element={<Alumni />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

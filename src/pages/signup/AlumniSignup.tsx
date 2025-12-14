@@ -44,8 +44,8 @@ export default function AlumniSignup({ onNext }: Props) {
     else if (!isValidEmail(data.email)) next.email = "Enter a valid email.";
 
     if (!data.password) next.password = "Password is required.";
-    else if (data.password.length < 8)
-      next.password = "Password must be at least 8 characters.";
+    else if (data.password.length < 3)
+      next.password = "Password must be at least 3 characters.";
 
     if (!data.confirmPassword)
       next.confirmPassword = "Please confirm password.";
@@ -165,7 +165,7 @@ export default function AlumniSignup({ onNext }: Props) {
 
           {hasErrors && (
             <p className="text-xs text-gray-500 text-center">
-              Tip: use a real-looking email and an 8+ char password.
+              Tip: shortened to 3+ chars for demo.
             </p>
           )}
         </form>

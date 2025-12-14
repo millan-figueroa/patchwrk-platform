@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 
+// this type describes the shape of the learner signup form data
 export type LearnerSignupForm = {
   fullName: string;
   email: string;
@@ -8,13 +9,18 @@ export type LearnerSignupForm = {
   cohort?: string;
 };
 
+// props the component expects
+// onnext is a function passed down from app.tsx
+// it tells the app when this step is finished
 interface Props {
   onNext: (data: LearnerSignupForm) => void;
 }
 
+// defines an object type where each field from LearnerSignupForm can optionally have a string error message associated with it.
 type FieldErrors = Partial<Record<keyof LearnerSignupForm, string>>;
 
 export default function LearnerSignup({ onNext }: Props) {
+  // local state to store what the user types into the form
   const [form, setForm] = useState<LearnerSignupForm>({
     fullName: "",
     email: "",
@@ -23,12 +29,14 @@ export default function LearnerSignup({ onNext }: Props) {
     cohort: "",
   });
 
+  // local state to store simple error messages
   const [errors, setErrors] = useState<FieldErrors>({});
   const [showPw, setShowPw] = useState(false);
 
   const isValidEmail = (email: string) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
+  // this function checks the form and returns any errors
   const validate = (data: LearnerSignupForm): FieldErrors => {
     const next: FieldErrors = {};
 
@@ -37,8 +45,8 @@ export default function LearnerSignup({ onNext }: Props) {
     else if (!isValidEmail(data.email)) next.email = "Enter a valid email.";
 
     if (!data.password) next.password = "Password is required.";
-    else if (data.password.length < 8)
-      next.password = "Password must be at least 8 characters.";
+    else if (data.password.length < 3)
+      next.password = "Password must be at least 3 characters.";
 
     if (!data.confirmPassword)
       next.confirmPassword = "Please confirm password.";
@@ -48,12 +56,13 @@ export default function LearnerSignup({ onNext }: Props) {
     return next;
   };
 
-  // Optional: if you want to show a subtle hint
+  // sshow a subtle hint
   const hasErrors = useMemo(
     () => Object.keys(validate(form)).length > 0,
     [form]
   );
 
+  // updates form state whenever the user types
   const onChange =
     (key: keyof LearnerSignupForm) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,19 +70,21 @@ export default function LearnerSignup({ onNext }: Props) {
       setErrors((prev) => ({ ...prev, [key]: undefined }));
     };
 
+  // runs when the user clicks the next button
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    // check for errors
     const validationErrors = validate(form);
     setErrors(validationErrors);
-
+    // if there are errors, stop here
     if (Object.keys(validationErrors).length > 0) return;
-
+    // if everything is valid, send the data to the parent
+    // app.tsx will handle navigation to alumni preferences
     onNext(form);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-indigo-100 p-6">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">
           Learner Sign Up
@@ -163,7 +174,7 @@ export default function LearnerSignup({ onNext }: Props) {
 
           {hasErrors && (
             <p className="text-xs text-gray-500 text-center">
-              Tip: use a real-looking email and an 8+ char password.
+              Tip: shortened to 3+ chars for demo.
             </p>
           )}
         </form>

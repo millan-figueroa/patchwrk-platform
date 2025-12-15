@@ -65,7 +65,7 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
         />
 
         {/* Main Content */}
-        <div className="fflex flex-row">
+        < div className ="flex flex-row">
           <div className="flex-1 w-full p-6">{renderContent()}</div>
 
           <div className="lg:col-span-1">

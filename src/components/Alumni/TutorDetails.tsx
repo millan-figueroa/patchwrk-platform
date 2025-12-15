@@ -98,7 +98,7 @@ const TutorTopicItem = ({ topic }: { topic: TutorTopic }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 mb-3">
+    <div className="bg-white border border-gray-300 rounded-lg p-4 mb-3">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-slate-800">
@@ -171,7 +171,10 @@ export const TutorProfile = ({ tutor }: { tutor: TutorProps }) => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {tutor.availability.map((avail, index) => (
-            <div key={index} className="border border-gray-300 rounded p-3">
+            <div
+              key={index}
+              className="bg-white border border-gray-300 rounded p-3"
+            >
               <p>
                 <span className="font-medium">{avail.day}</span> at {avail.time}
                 :00
@@ -189,7 +192,7 @@ export const TutorProfile = ({ tutor }: { tutor: TutorProps }) => {
           tutor.scheduledLessons.map((lesson, index) => (
             <div
               key={index}
-              className="border border-gray-300 rounded p-4 mb-3"
+              className="bg-white border border-gray-300 rounded p-4 mb-3"
             >
               <p>
                 <span className="font-medium">Lesson ID:</span> {lesson.id}

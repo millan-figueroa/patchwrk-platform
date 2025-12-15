@@ -9,7 +9,7 @@ type Session = {
   status: "scheduled" | "completed" | "cancelled";
 };
 
-export default function StudentSchedule() {
+export default function LearnerSchedule() {
   const [sessions, setSessions] = useState<Session[]>([
     {
       id: "1",
@@ -75,7 +75,7 @@ export default function StudentSchedule() {
         />
         <button
           onClick={addSession}
-          className="md:col-span-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          className="md:col-span-3 bg-linear-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-lg hover:bg-blue-700"
         >
           Add Session
         </button>

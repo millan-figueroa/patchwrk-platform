@@ -108,7 +108,7 @@ export default function StudentProfile() {
           <>
             <button
               onClick={saveProfile}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
               Save
             </button>
@@ -122,7 +122,7 @@ export default function StudentProfile() {
         ) : (
           <button
             onClick={() => setIsEditing(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
           >
             Edit Profile
           </button>

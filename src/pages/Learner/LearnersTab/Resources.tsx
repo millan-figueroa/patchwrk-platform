@@ -47,15 +47,14 @@ const INITIAL_RESOURCES: Resource[] = [
 ];
 
 export default function Resources() {
-  const [categoryFilter, setCategoryFilter] =
-    useState<Resource["category"] | "All">("All");
+  const [categoryFilter, setCategoryFilter] = useState<
+    Resource["category"] | "All"
+  >("All");
 
   const filteredResources =
     categoryFilter === "All"
       ? INITIAL_RESOURCES
-      : INITIAL_RESOURCES.filter(
-          (res) => res.category === categoryFilter
-        );
+      : INITIAL_RESOURCES.filter((res) => res.category === categoryFilter);
 
   return (
     <div className="bg-white rounded-xl shadow p-6">
@@ -77,7 +76,7 @@ export default function Resources() {
             }
             className={`px-3 py-1 rounded-full text-sm border ${
               categoryFilter === cat
-                ? "bg-blue-600 text-white border-blue-600"
+                ? "bg-purple-600 text-white border-purple-600"
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
@@ -97,9 +96,7 @@ export default function Resources() {
               className="border rounded-lg p-4 hover:shadow transition"
             >
               <h3 className="font-medium text-lg">{res.title}</h3>
-              <p className="text-sm text-gray-600 mb-2">
-                {res.description}
-              </p>
+              <p className="text-sm text-gray-600 mb-2">{res.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-xs bg-gray-100 px-2 py-1 rounded">
                   {res.category}

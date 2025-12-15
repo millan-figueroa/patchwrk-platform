@@ -56,7 +56,7 @@ export default function Help() {
             key={idx}
             className={`max-w-[75%] p-3 rounded-lg text-sm ${
               msg.role === "user"
-                ? "ml-auto bg-blue-600 text-white"
+                ? "ml-auto bg-purple-600 text-white"
                 : "bg-white border text-gray-800"
             }`}
           >
@@ -76,7 +76,7 @@ export default function Help() {
         />
         <button
           onClick={sendMessage}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
         >
           Send
         </button>

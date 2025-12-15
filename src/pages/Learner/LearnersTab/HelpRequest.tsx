@@ -31,7 +31,7 @@ export default function StudentDash() {
     <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
       <header className="mb-6">
-        <h1 className="text-2xl font-bold">Student Dashboard</h1>
+        <h1 className="text-2xl font-bold">Learner Dashboard</h1>
         <p className="text-gray-600">
           Request help, track your questions, and keep learning.
         </p>
@@ -59,7 +59,7 @@ export default function StudentDash() {
 
           <button
             onClick={submitRequest}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
           >
             Submit Request
           </button>
@@ -73,7 +73,7 @@ export default function StudentDash() {
           </p>
 
           <div className="mt-4 text-sm text-gray-500">
-            💡 Example:  
+            💡 Example:
             <br />
             “I don’t understand how `useEffect` dependencies work.”
           </div>
@@ -97,7 +97,7 @@ export default function StudentDash() {
                   <p className="font-medium">{req.topic}</p>
                   <p className="text-sm text-gray-600">{req.details}</p>
                 </div>
-                <span className="text-sm text-blue-600 capitalize">
+                <span className="text-sm text-purple-600 capitalize">
                   {req.status}
                 </span>
               </li>

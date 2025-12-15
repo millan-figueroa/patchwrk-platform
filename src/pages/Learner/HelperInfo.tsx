@@ -59,7 +59,7 @@ export default function LearnerDash() {
 
           <button
             onClick={submitRequest}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
           >
             Submit Request
           </button>
@@ -83,7 +83,7 @@ export default function LearnerDash() {
                   <p className="font-medium">{req.topic}</p>
                   <p className="text-sm text-gray-600">{req.details}</p>
                 </div>
-                <span className="text-sm text-blue-600 capitalize">
+                <span className="text-sm text-purple-600 capitalize">
                   {req.status}
                 </span>
               </li>

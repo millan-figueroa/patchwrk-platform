@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import NavBar from "../../components/common/SideNav";
 import navigationConfig from "../../data/navigationConfig.json";
 
-import StudentDash from "../../pages/Learner/LearnersTab/StudentDash";
+import LearnerDash from "./LearnersTab/HelpRequest";
 import Help from "../../pages/Learner/LearnersTab/Help";
-import StudentSchedule from "./LearnersTab/StudentSchedule";
-import StudentProfile from "./LearnersTab/StudentProfile";
+import LearnerSchedule from "./LearnersTab/LearnerSchedule";
+import LearnerProfile from "./LearnersTab/LearnerProfile";
 import Resources from "./LearnersTab/Resources";
 import LearnerHeader from "./LearnerHeader";
 import AIChatAssistant from "../../components/common/AIChatAssistant";
@@ -26,15 +26,15 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <StudentDash />;
+        return <LearnerDash />;
       case "help":
         return <Help />;
       case "schedule":
-        return <StudentSchedule />;
+        return <LearnerSchedule />;
       case "resources":
         return <Resources />;
       case "profile":
-        return <StudentProfile />;
+        return <LearnerProfile />;
       case "details":
         return <LearnerDetails student={testStudent1} />;
       default:
@@ -67,13 +67,12 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
         {/* Main Content */}
         < div className ="flex flex-row">
           <div className="flex-1 w-full p-6">{renderContent()}</div>
-          
 
-            <div className="lg:col-span-1">
-              <div className="sticky top-6">
-                <AIChatAssistant />
-              </div>
+          <div className="lg:col-span-1">
+            <div className="sticky top-6">
+              <AIChatAssistant />
             </div>
+          </div>
         </div>
       </div>
     </div>

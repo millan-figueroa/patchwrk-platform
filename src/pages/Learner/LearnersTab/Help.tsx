@@ -40,7 +40,7 @@ export default function Help() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 h-full flex flex-col">
+    <div className="bg-white rounded-xl shadow p-6 h-[75vh] flex flex-col">
       {/* Header */}
       <div className="mb-4">
         <h2 className="text-xl font-semibold">Get Help</h2>
@@ -50,7 +50,7 @@ export default function Help() {
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto border rounded-lg p-3 space-y-3 mb-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto border rounded-lg p-3 space-y-3 mb-4 bg-gray-50 min-h-[50vh] max-h-[55vh]">
         {messages.map((msg, idx) => (
           <div
             key={idx}

@@ -65,10 +65,10 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
         />
 
         {/* Main Content */}
-        <div className="fflex flex-row">
-          <div className="flex-1 w-full p-6">{renderContent()}</div>
+        <div className="flex flex-row w-full">
+          <div className="flex-1 p-6">{renderContent()}</div>
 
-          <div className="lg:col-span-1">
+          <div className="w-96 p-6">
             <div className="sticky top-6">
               <AIChatAssistant />
             </div>

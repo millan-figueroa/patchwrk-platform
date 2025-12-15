@@ -14,7 +14,7 @@ const LearnerHeader: React.FC<LearnerHeaderProps> = ({
   };
 
   return (
-    <header className="w-full bg-linear-to-r from-purple-600 to-indigo-600 shadow-md">
+    <header className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* left side */}

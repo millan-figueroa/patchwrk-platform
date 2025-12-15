@@ -52,7 +52,7 @@ export interface ScheduleBlock {
     tutorId: string;
     // student topic Id
     topicId: string;
-    status: 'scheduled' | 'completed' | 'cancelled' | 'no-show' 
+    status: 'scheduled' | 'completed' | 'cancelled' | 'no-show'
 }
 
 export interface StudentProps {
@@ -84,71 +84,72 @@ export interface TutorProps {
 
 
 export const alg2testTopic: StudentTopic = {
-    topic: "Algebra II",
+    topic: "JavaScript Fundamentals",
     topicId: "I00001",
-    category: "Mathematics",
+    category: "Frontend Development",
     grade: 72.5,
-    tutorId: "T00001"
-}
+    tutorId: "T00001",
+};
 
 export const alg2testTopicTutor: TutorTopic = {
-    topic: "Algebra II",
+    topic: "JavaScript Fundamentals",
     topicId: "I00001",
-    category: "Mathematics",
-    rating: 5
-}
+    category: "Frontend Development",
+    rating: 5,
+};
 
 export const calc1testTopic: StudentTopic = {
-    topic: "Calculus I",
+    topic: "React Fundamentals",
     topicId: "I00002",
-    category: "Mathematics",
+    category: "Frontend Development",
     grade: 63.0,
-    tutorId: "T00001"
-}
+    tutorId: "T00001",
+};
 
 export const calc1testTopicTutor: TutorTopic = {
-    topic: "Calculus I",
+    topic: "React Fundamentals",
     topicId: "I00002",
-    category: "Mathematics",
-    rating: 3.0
-}
+    category: "Frontend Development",
+    rating: 3.0,
+};
 
 export const stat3testTopic: StudentTopic = {
-    topic: "Statistics III",
+    topic: "Node.js & Express APIs",
     topicId: "I00003",
-    category: "Mathematics",
+    category: "Backend Development",
     grade: 87.5,
-    tutorId: "T00002"
-}
+    tutorId: "T00002",
+};
 
 export const stat3testTopicTutor: TutorTopic = {
-    topic: "Statistics III",
+    topic: "Node.js & Express APIs",
     topicId: "I00003",
-    category: "Mathematics",
-    rating: 4
-}
+    category: "Backend Development",
+    rating: 4,
+};
 
-export const testAvail1: ScheduleAvailability ={
+
+export const testAvail1: ScheduleAvailability = {
     day: 'Monday',
     time: 13
 }
 
-export const testAvail2: ScheduleAvailability ={
+export const testAvail2: ScheduleAvailability = {
     day: 'Monday',
     time: 14
 }
 
-export const testAvail3: ScheduleAvailability ={
+export const testAvail3: ScheduleAvailability = {
     day: 'Monday',
     time: 15
 }
 
-export const testAvail4: ScheduleAvailability ={
+export const testAvail4: ScheduleAvailability = {
     day: 'Tuesday',
     time: 13
 }
 
-export const testAvail5: ScheduleAvailability ={
+export const testAvail5: ScheduleAvailability = {
     day: 'Saturday',
     time: 10
 }
@@ -173,7 +174,7 @@ export const testStudent1: StudentProps = {
     nameLast: 'Dirac',
     studentId: 'S00001',
     subjects: [alg2testTopic, calc1testTopic, stat3testTopic],
-    availability: [testAvail1,testAvail2,testAvail3],
+    availability: [testAvail1, testAvail2, testAvail3],
     scheduledLessons: [testLesson1],
     awards: [testStudentAward]
 }
@@ -183,7 +184,7 @@ export const testTutor1: TutorProps = {
     nameLast: "Einstein",
     tutorId: "T00001",
     subjects: [alg2testTopicTutor, calc1testTopicTutor],
-    availability: [testAvail1,testAvail4,testAvail5],
+    availability: [testAvail1, testAvail4, testAvail5],
     scheduledLessons: [testLesson1]
 }
 
@@ -192,7 +193,7 @@ export const testTutor2: TutorProps = {
     nameLast: "Kovalevskaya",
     tutorId: "T00002",
     subjects: [stat3testTopicTutor],
-    availability: [testAvail2,testAvail3],
+    availability: [testAvail2, testAvail3],
     scheduledLessons: []
 }
 

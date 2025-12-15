@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+// **check where subject info is coming from to update to tech relate subjects
+// **decide between tutor/ mentor/ alumni and standardize language
+// **should reward/ badges/ streaks go here?
+
 // Type definitions
 interface TutorTopic {
   topic: string;
@@ -40,9 +44,9 @@ interface TutorProps {
   scheduledLessons: ScheduleBlock[];
 }
 
-// Test data (unchanged)
+// Test data
 const alg2testTopicTutor: TutorTopic = {
-  topic: "Algebra II",
+  topic: "ddd",
   topicId: "I00001",
   category: "Mathematics",
   rating: 5,
@@ -94,7 +98,7 @@ const TutorTopicItem = ({ topic }: { topic: TutorTopic }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-white/90 backdrop-blur border border-indigo-100 rounded-2xl p-5 shadow-sm">
+    <div className="border border-gray-300 rounded-lg p-4 mb-3">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-slate-800">
@@ -146,107 +150,77 @@ const TutorTopicItem = ({ topic }: { topic: TutorTopic }) => {
 // Main Tutor Profile Component
 export const TutorProfile = ({ tutor }: { tutor: TutorProps }) => {
   return (
-    <div className="min-h-screen ">
-      <div className="max-w-5xl mx-auto px-6 py-10">
-        <div className="bg-white/90 backdrop-blur rounded-2xl shadow-md border border-indigo-100 p-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-slate-800">
-              {tutor.nameFirst} {tutor.nameLast}
-            </h1>
-            <p className="text-slate-600">Tutor ID: {tutor.tutorId}</p>
-          </div>
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-gray-800">
+          {tutor.nameFirst} {tutor.nameLast}
+        </h1>
+        <p className="text-gray-600">Tutor ID: {tutor.tutorId}</p>
+      </div>
 
-          <div className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 text-slate-800">
-              Subjects
-            </h2>
-            <div className="space-y-4">
-              {tutor.subjects.map((subject, index) => (
-                <TutorTopicItem key={index} topic={subject} />
-              ))}
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-700">Subjects</h2>
+        {tutor.subjects.map((subject, index) => (
+          <TutorTopicItem key={index} topic={subject} />
+        ))}
+      </div>
+
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-700">
+          Availability
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {tutor.availability.map((avail, index) => (
+            <div key={index} className="border border-gray-300 rounded p-3">
+              <p>
+                <span className="font-medium">{avail.day}</span> at {avail.time}
+                :00
+              </p>
             </div>
-          </div>
-
-          <div className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 text-slate-800">
-              Availability
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {tutor.availability.map((avail, index) => (
-                <div
-                  key={index}
-                  className="bg-white/80 border border-indigo-100 rounded-2xl p-4 shadow-sm"
-                >
-                  <p className="text-slate-700">
-                    <span className="font-semibold text-slate-800">
-                      {avail.day}
-                    </span>{" "}
-                    at {avail.time}:00
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-4 text-slate-800">
-              Scheduled Lessons
-            </h2>
-
-            {tutor.scheduledLessons.length > 0 ? (
-              <div className="space-y-4">
-                {tutor.scheduledLessons.map((lesson, index) => (
-                  <div
-                    key={index}
-                    className="bg-white/80 border border-indigo-100 rounded-2xl p-5 shadow-sm"
-                  >
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Lesson ID:
-                      </span>{" "}
-                      {lesson.id}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Date:
-                      </span>{" "}
-                      {lesson.day}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Time:
-                      </span>{" "}
-                      {lesson.time}:00
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Student ID:
-                      </span>{" "}
-                      {lesson.studentId}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Topic ID:
-                      </span>{" "}
-                      {lesson.topicId}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Status:
-                      </span>{" "}
-                      <span className="inline-flex items-center px-2 py-1 rounded-md bg-purple-100 text-indigo-700 font-semibold">
-                        {lesson.status}
-                      </span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-slate-600">No scheduled lessons</p>
-            )}
-          </div>
+          ))}
         </div>
+      </div>
+
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-700">
+          Scheduled Lessons
+        </h2>
+        {tutor.scheduledLessons.length > 0 ? (
+          tutor.scheduledLessons.map((lesson, index) => (
+            <div
+              key={index}
+              className="border border-gray-300 rounded p-4 mb-3"
+            >
+              <p>
+                <span className="font-medium">Lesson ID:</span> {lesson.id}
+              </p>
+              <p>
+                <span className="font-medium">Date:</span> {lesson.day}
+              </p>
+              <p>
+                <span className="font-medium">Time:</span> {lesson.time}:00
+              </p>
+              <p>
+                <span className="font-medium">Student ID:</span>{" "}
+                {lesson.studentId}
+              </p>
+              <p>
+                <span className="font-medium">Topic ID:</span> {lesson.topicId}
+              </p>
+              <p>
+                <span className="font-medium">Status:</span> {lesson.status}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p className="text-gray-500">No scheduled lessons</p>
+        )}
       </div>
     </div>
   );
 };
+
+// Export component with test data
+// export default function App() {
+//   return <TutorProfile tutor={testTutor1} />;
+// }

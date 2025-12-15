@@ -1,51 +1,82 @@
-# Per Scholas Hackathon 2025
+# Team 3 AI Learner Platform
 
-## Challenge Brief: PeerTrack+ — The AI-Powered Tutoring & Support Network
+## Overview
 
-### Overview
+An AI-powered tutoring platform connecting learners with alumni mentors through intelligent matching and real-time support.
 
-Welcome to the 2025 Per Scholas Hackathon!  
-This year’s challenge combines two of our strongest community values — mentorship and innovation.
+![Platform Overview](./public/Landing.png)
 
-Your mission is to design and prototype a platform that brings AI and human connection together to help learners succeed beyond the classroom.
+## 🚀 Features
 
-**PeerTrack+** is an AI-powered tutoring and mentorship platform where alumni and current learners collaborate, share knowledge, and grow together.
+- **Study Assistant** - Real-time chat support across all pages  
+- **Resource Sharing** - Learning materials assigned by tutors
+- **Session Scheduling** - Integrated calendar system
+- **Progress Tracking** - Analytics for students and tutors
+
+## 🎯 User Roles
+
+### 👨‍🎓 Students
+- Submit help requests by topic
+- Access AI study assistant
+- View assigned resources
+- Manage schedule and profile
+
+![Student Dashboard](./public/Learner.png)
+
+### 🎓 Alumni (Tutors)
+- Review mentorship requests
+- Manage current students
+- Assign learning resources
+- Track student progress
+- Schedule tutoring sessions
+
+![Alumni Dashboard](./public/Alumni.png)
+
+### 👨‍💼 Administrators
+- Oversee platform users
+- Monitor tutoring sessions
+- Manage user registrations
+- View platform analytics
+
+![Admin Dashboard](./public/Screenshot%202025-12-14%20235830.png)
+
+## 🛠 Tech Stack
+
+- **React + TypeScript**
+- **Tailwind CSS**
+- **Vite**
+- **React Router**
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/millan-figueroa/team3-ai-learner-platform.git
+
+# Install dependencies
+cd team3-ai-learner-platform
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open `http://localhost:5173` to view the app.
+
+## 📁 Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/         # Main application pages
+├── data/          # Static data and config
+└── assets/        # Images and static files
+```
+
+## 👥 Team
+
+**Team 3** - Per Scholas AI Learner Platform
 
 ---
 
-### The Challenge
-
-Per Scholas wants to strengthen the bridge between graduates and current learners by creating a smart, gamified tutoring system that:
-
-- Recognizes alumni for giving back
-- Helps learners get support faster and more effectively
-
-**Goal:** Design a solution that pairs AI tools with human mentorship to make tutoring more accessible, personalized, and rewarding.
-
----
-
-### What Your Solution Should Include
-
-#### 1. Alumni & Learner Connection
-
-- Alumni can sign up as tutors, list skills, and offer sessions.
-- Learners can request help, ask questions, or schedule tutoring time.
-- Interfaces: **Admin view / Learner view / Tutor view**
-
-#### 2. AI Integration
-
-AI assists tutors and learners with features such as:
-
-- Smart matching between learners and tutors
-- AI study assistant or chatbot providing hints, summaries, or prep materials
-- AI dashboard showing trends, learner progress, or suggested learning paths
-
-#### 3. Gamification & Motivation
-
-- Points, badges, or leaderboards for tutoring sessions and learning milestones
-- Experience levels or ranks that reward ongoing participation
-
-#### 4. User-Friendly & Inclusive Design
-
-- Intuitive interface accessible to users of all tech levels
-- Scalable and sustainable architecture that can grow with the alumni network
+*Built for Per Scholas Hackathon 2025*

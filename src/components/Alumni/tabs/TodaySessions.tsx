@@ -35,7 +35,7 @@ const TodaySessions: React.FC = () => {
         {sessions.map((session) => (
           <div
             key={session.id}
-            className="flex items-center space-x-4 p-3 bg-blue-50 rounded-lg"
+            className="flex items-center space-x-4 p-3 bg-purple-50 rounded-lg"
           >
             <div className="text-purple-600 font-medium">{session.time}</div>
             <img
@@ -51,7 +51,7 @@ const TodaySessions: React.FC = () => {
             </div>
             <button
               onClick={() => handleJoinCall(session.id)}
-              className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700"
+              className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700"
             >
               Join Call
             </button>

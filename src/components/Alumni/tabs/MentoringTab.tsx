@@ -106,7 +106,7 @@ const MentoringTab: React.FC = () => {
           <button className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">
             Schedule Session
           </button>
-          <button className="bg-purple-200 text-purple-700 border-purple-500 px-4 py-2 rounded-md text-sm hover:bg-green-700">
+          <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm hover:bg-gray-300">
             Add Mentee
           </button>
         </div>

@@ -14,33 +14,36 @@ const LearnerHeader: React.FC<LearnerHeaderProps> = ({
   };
 
   return (
-    <div className="w-full bg-blue-600 shadow-md">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 w-full">
-          {/* Left side */}
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">
-              Learner Portal
+    <header className="w-full bg-linear-to-r from-purple-600 to-indigo-600 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* left side */}
+          <div className="flex items-center gap-3">
+            {/* logo placeholder */}
+            <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
+              L
+            </div>
+            <h1 className="text-lg font-semibold text-white tracking-wide">
+              Learner Dashboard
             </h1>
           </div>
 
-          {/* Right side */}
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-blue-100">
-              Welcome back, {username || "Learner"}
+          {/* right side */}
+          <div className="flex items-center gap-6">
+            <span className="text-sm text-indigo-100">
+              Welcome,{" "}
+              <span className="font-medium">{username || "Learner"}</span>
             </span>
 
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span className="text-sm text-green-300">
-                Active
-              </span>
+            <div className="flex items-center gap-2 text-sm text-green-200">
+              <span className="h-2 w-2 rounded-full bg-green-400"></span>
+              Active
             </div>
 
             {onNavigateHome && (
               <button
                 onClick={onNavigateHome}
-                className="bg-white/20 text-white px-4 py-2 rounded-md text-sm hover:bg-white/30 mr-2"
+                className="rounded-lg bg-white/15 px-4 py-2 text-sm font-medium text-white hover:bg-white/25 transition"
               >
                 Home
               </button>
@@ -48,14 +51,14 @@ const LearnerHeader: React.FC<LearnerHeaderProps> = ({
 
             <button
               onClick={handleLogout}
-              className="bg-red-600 text-white px-4 py-2 rounded-md text-sm hover:bg-red-700"
+              className="rounded-lg bg-white text-indigo-700 px-4 py-2 text-sm font-semibold hover:bg-indigo-50 transition"
             >
               Logout
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AIChatAssistant from "../../components/common/AIChatAssistant";
 
 type HelpRequest = {
   id: string;
@@ -65,9 +64,6 @@ export default function LearnerDash() {
             Submit Request
           </button>
         </section>
-
-        {/* AI Study Assistant */}
-        <AIChatAssistant />
       </div>
 
       {/* Active Requests */}

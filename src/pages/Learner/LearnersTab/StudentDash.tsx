@@ -1,6 +1,4 @@
 import { useState } from "react";
-import AIBestMatchTutors from "../../../components/AIBestMatchTutors";
-import AIChatAssistant from "../../../components/common/AIChatAssistant";
 
 type HelpRequest = {
   id: string;
@@ -67,12 +65,46 @@ export default function StudentDash() {
           </button>
         </section>
 
-        {/* AI Study Assistant */}
-        <AIChatAssistant />
+        {/* Quick Tips / Placeholder */}
+        <section className="bg-white rounded-xl shadow p-4">
+          <h2 className="text-lg font-semibold mb-2">Study Tips</h2>
+          <p className="text-gray-600 text-sm">
+            Be specific in your request to get faster, better help.
+          </p>
+
+          <div className="mt-4 text-sm text-gray-500">
+            💡 Example:  
+            <br />
+            “I don’t understand how `useEffect` dependencies work.”
+          </div>
+        </section>
       </div>
 
-      {/* AI Best Match Tutors */}
-      <AIBestMatchTutors />
+      {/* Active Requests */}
+      <section className="mt-6 bg-white rounded-xl shadow p-4">
+        <h2 className="text-lg font-semibold mb-3">My Requests</h2>
+
+        {requests.length === 0 ? (
+          <p className="text-gray-500">No requests yet.</p>
+        ) : (
+          <ul className="space-y-2">
+            {requests.map((req) => (
+              <li
+                key={req.id}
+                className="border rounded-lg p-3 flex justify-between"
+              >
+                <div>
+                  <p className="font-medium">{req.topic}</p>
+                  <p className="text-sm text-gray-600">{req.details}</p>
+                </div>
+                <span className="text-sm text-blue-600 capitalize">
+                  {req.status}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
   );
 }

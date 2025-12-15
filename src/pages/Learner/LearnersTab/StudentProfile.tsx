@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AIChatAssistant from "../../../components/common/AIChatAssistant";
 
 type StudentProfileData = {
   name: string;
@@ -35,19 +34,14 @@ export default function StudentProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="bg-white rounded-xl shadow p-6 max-w-2xl">
       {/* Header */}
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold">My Profile</h1>
-        <p className="text-gray-600">
+      <div className="mb-4">
+        <h2 className="text-xl font-semibold">My Profile</h2>
+        <p className="text-gray-600 text-sm">
           View and update your personal information.
         </p>
-      </header>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Profile Form */}
-        <section className="md:col-span-2 bg-white rounded-xl shadow p-6">
-          <h2 className="text-lg font-semibold mb-4">Profile Information</h2>
+      </div>
 
       <div className="space-y-4">
         {/* Name */}
@@ -133,11 +127,6 @@ export default function StudentProfile() {
             Edit Profile
           </button>
         )}
-      </div>
-        </section>
-
-        {/* AI Study Assistant */}
-        <AIChatAssistant />
       </div>
     </div>
   );

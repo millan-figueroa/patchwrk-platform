@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import NavBar from "../../components/common/NavBar";
+import NavBar from "../../components/common/SideNav";
 import navigationConfig from "../../data/navigationConfig.json";
 
 import StudentDash from "../../pages/Learner/LearnersTab/StudentDash";
@@ -14,7 +13,6 @@ import { LearnerDetails } from "./LearnersTab/LearnerDetails";
 
 import { testStudent1 } from "../../components/types/user-types";
 
-
 interface LearnerProps {
   username?: string;
 }
@@ -23,7 +21,7 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
   const [activeTab, setActiveTab] = useState(
     navigationConfig.learner.defaultTab
   );
-  const [isNavCollapsed, setIsNavCollapsed] = useState(false);  
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -38,7 +36,7 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
       case "profile":
         return <StudentProfile />;
       case "details":
-        return <LearnerDetails student={testStudent1}/>;
+        return <LearnerDetails student={testStudent1} />;
       default:
         return (
           <div className="bg-white p-6 rounded-lg shadow">
@@ -58,26 +56,25 @@ const Learner: React.FC<LearnerProps> = ({ username }) => {
 
       {/* Layout */}
       <div className="flex w-full">
-       <NavBar
+        <NavBar
           tabs={navigationConfig.learner.tabs}
           activeTab={activeTab}
           onTabChange={setActiveTab}
           isCollapsed={isNavCollapsed}
           onToggleCollapse={() => setIsNavCollapsed(!isNavCollapsed)}
-      />
+        />
 
         {/* Main Content */}
-        < div className ="fflex flex-row">
+        <div className="fflex flex-row">
           <div className="flex-1 w-full p-6">{renderContent()}</div>
-          
 
-            <div className="lg:col-span-1">
-              <div className="sticky top-6">
-                <AIChatAssistant />
-              </div>
+          <div className="lg:col-span-1">
+            <div className="sticky top-6">
+              <AIChatAssistant />
             </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
   );
 };

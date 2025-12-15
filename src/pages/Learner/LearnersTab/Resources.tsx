@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AIChatAssistant from "../../../components/common/AIChatAssistant";
 
 type Resource = {
   id: string;
@@ -58,65 +59,75 @@ export default function Resources() {
         );
 
   return (
-    <div className="bg-white rounded-xl shadow p-6">
+    <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold">Learning Resources</h2>
-        <p className="text-gray-600 text-sm">
+      <header className="mb-6">
+        <h1 className="text-2xl font-bold">Learning Resources</h1>
+        <p className="text-gray-600">
           Curated materials to help you learn and grow.
         </p>
-      </div>
+      </header>
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {["All", "Frontend", "Backend", "Career", "General"].map((cat) => (
-          <button
-            key={cat}
-            onClick={() =>
-              setCategoryFilter(cat as Resource["category"] | "All")
-            }
-            className={`px-3 py-1 rounded-full text-sm border ${
-              categoryFilter === cat
-                ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-gray-700 hover:bg-gray-100"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Resources Section */}
+        <section className="md:col-span-2 bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold mb-4">Resources</h2>
 
-      {/* Resource List */}
-      {filteredResources.length === 0 ? (
-        <p className="text-gray-500">No resources found.</p>
-      ) : (
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredResources.map((res) => (
-            <li
-              key={res.id}
-              className="border rounded-lg p-4 hover:shadow transition"
-            >
-              <h3 className="font-medium text-lg">{res.title}</h3>
-              <p className="text-sm text-gray-600 mb-2">
-                {res.description}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs bg-gray-100 px-2 py-1 rounded">
-                  {res.category}
-                </span>
-                <a
-                  href={res.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 text-sm hover:underline"
+          {/* Filters */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {["All", "Frontend", "Backend", "Career", "General"].map((cat) => (
+              <button
+                key={cat}
+                onClick={() =>
+                  setCategoryFilter(cat as Resource["category"] | "All")
+                }
+                className={`px-3 py-1 rounded-full text-sm border ${
+                  categoryFilter === cat
+                    ? "bg-blue-600 text-white border-blue-600"
+                    : "bg-white text-gray-700 hover:bg-gray-100"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Resource List */}
+          {filteredResources.length === 0 ? (
+            <p className="text-gray-500">No resources found.</p>
+          ) : (
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {filteredResources.map((res) => (
+                <li
+                  key={res.id}
+                  className="border rounded-lg p-4 hover:shadow transition"
                 >
-                  View →
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+                  <h3 className="font-medium text-lg">{res.title}</h3>
+                  <p className="text-sm text-gray-600 mb-2">
+                    {res.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs bg-gray-100 px-2 py-1 rounded">
+                      {res.category}
+                    </span>
+                    <a
+                      href={res.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 text-sm hover:underline"
+                    >
+                      View →
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        {/* AI Study Assistant */}
+        <AIChatAssistant />
+      </div>
     </div>
   );
 }

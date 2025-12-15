@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AIChatAssistant from "../../../components/common/AIChatAssistant";
 
 type Message = {
   role: "user" | "assistant";
@@ -40,46 +41,56 @@ export default function Help() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 h-full flex flex-col">
+    <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold">Get Help</h2>
-        <p className="text-gray-600 text-sm">
+      <header className="mb-6">
+        <h1 className="text-2xl font-bold">Get Help</h1>
+        <p className="text-gray-600">
           Ask questions, get hints, and learn step-by-step.
         </p>
-      </div>
+      </header>
 
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto border rounded-lg p-3 space-y-3 mb-4 bg-gray-50">
-        {messages.map((msg, idx) => (
-          <div
-            key={idx}
-            className={`max-w-[75%] p-3 rounded-lg text-sm ${
-              msg.role === "user"
-                ? "ml-auto bg-blue-600 text-white"
-                : "bg-white border text-gray-800"
-            }`}
-          >
-            {msg.content}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Help Chat */}
+        <section className="md:col-span-2 bg-white rounded-xl shadow p-6 h-full flex flex-col">
+          <h2 className="text-lg font-semibold mb-4">Chat with AI Tutor</h2>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto border rounded-lg p-3 space-y-3 mb-4 bg-gray-50 min-h-96">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`max-w-[75%] p-3 rounded-lg text-sm ${
+                  msg.role === "user"
+                    ? "ml-auto bg-blue-600 text-white"
+                    : "bg-white border text-gray-800"
+                }`}
+              >
+                {msg.content}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Input */}
-      <div className="flex gap-2">
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          className="flex-1 border rounded-lg p-2"
-          placeholder="Type your question..."
-        />
-        <button
-          onClick={sendMessage}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-        >
-          Send
-        </button>
+          {/* Input */}
+          <div className="flex gap-2">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+              className="flex-1 border rounded-lg p-2"
+              placeholder="Type your question..."
+            />
+            <button
+              onClick={sendMessage}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            >
+              Send
+            </button>
+          </div>
+        </section>
+
+        {/* AI Study Assistant */}
+        <AIChatAssistant />
       </div>
     </div>
   );

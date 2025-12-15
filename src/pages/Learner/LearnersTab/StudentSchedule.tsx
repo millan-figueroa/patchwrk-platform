@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AIChatAssistant from "../../../components/common/AIChatAssistant";
 
 type Session = {
   id: string;
@@ -44,14 +45,19 @@ export default function StudentSchedule() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-6">
+    <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold">My Schedule</h2>
-        <p className="text-gray-600 text-sm">
+      <header className="mb-6">
+        <h1 className="text-2xl font-bold">My Schedule</h1>
+        <p className="text-gray-600">
           View and manage your tutoring sessions.
         </p>
-      </div>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Schedule Management */}
+        <section className="md:col-span-2 bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold mb-4">Sessions</h2>
 
       {/* Add Session */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
@@ -116,6 +122,11 @@ export default function StudentSchedule() {
           ))}
         </ul>
       )}
+        </section>
+
+        {/* AI Study Assistant */}
+        <AIChatAssistant />
+      </div>
     </div>
   );
 }

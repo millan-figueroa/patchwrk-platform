@@ -23,6 +23,9 @@ export default function LandingNav() {
 
           {/* primary nav */}
           <nav className="hidden md:flex items-center gap-6">
+            <span className="text-sm font-bold tracking-wide text-indigo-700">
+              PEERTRACK+
+            </span>
             <button
               onClick={() => navigate("/")}
               className="text-sm font-medium text-gray-700 hover:text-indigo-700 transition"
@@ -43,10 +46,6 @@ export default function LandingNav() {
             >
               Resources
             </button>
-
-            <span className="text-sm font-bold tracking-wide text-indigo-700">
-              PROVEN PROGRESS
-            </span>
           </nav>
         </div>
 

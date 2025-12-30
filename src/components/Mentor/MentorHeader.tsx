@@ -1,11 +1,11 @@
 import React from "react";
 
-interface AlumniHeaderProps {
+interface MentorHeaderProps {
   username?: string;
   onNavigateHome?: () => void;
 }
 
-const AlumniHeader: React.FC<AlumniHeaderProps> = ({
+const MentorHeader: React.FC<MentorHeaderProps> = ({
   username,
   onNavigateHome,
 }) => {
@@ -24,7 +24,7 @@ const AlumniHeader: React.FC<AlumniHeaderProps> = ({
               A
             </div>
             <h1 className="text-lg font-semibold text-white tracking-wide">
-              Alumni Mentor Dashboard
+              Mentor Mentor Dashboard
             </h1>
           </div>
 
@@ -32,7 +32,7 @@ const AlumniHeader: React.FC<AlumniHeaderProps> = ({
           <div className="flex items-center gap-6">
             <span className="text-sm text-indigo-100">
               Welcome,{" "}
-              <span className="font-medium">{username || "Alumni"}</span>
+              <span className="font-medium">{username || "Mentor"}</span>
             </span>
 
             <div className="flex items-center gap-2 text-sm text-green-200">
@@ -62,4 +62,4 @@ const AlumniHeader: React.FC<AlumniHeaderProps> = ({
   );
 };
 
-export default AlumniHeader;
+export default MentorHeader;

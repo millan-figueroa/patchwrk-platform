@@ -64,7 +64,7 @@ const ProfileTab: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-900">Alumni Profile</h2>
+        <h2 className="text-xl font-semibold text-gray-900">Mentor Profile</h2>
         <div className="flex space-x-2">
           {isEditing ? (
             <>

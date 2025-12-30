@@ -1,4 +1,4 @@
-export interface Mentee {
+export interface Learner {
   id: number;
   name: string;
   program: string;

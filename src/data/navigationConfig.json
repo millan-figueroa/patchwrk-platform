@@ -1,5 +1,5 @@
 {
-  "alumni": {
+  "mentor": {
     "defaultTab": "dashboard",
     "tabs": [
       {
@@ -29,7 +29,7 @@
       },
       {
         "key": "details",
-        "label": "Alumni Details",
+        "label": "Mentor Details",
         "icon": "🗃️"
       }
     ],

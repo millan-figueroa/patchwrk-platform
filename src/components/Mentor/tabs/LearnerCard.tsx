@@ -1,12 +1,12 @@
 import React from "react";
-import type { Mentee } from "../types";
+import type { Learner } from "../types";
 
-interface MenteeCardProps {
-  mentee: Mentee;
-  onMessage?: (mentee: Mentee) => void;
+interface LearnerCardProps {
+  learner: Learner;
+  onMessage?: (learner: Learner) => void;
 }
 
-const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
+const LearnerCard: React.FC<LearnerCardProps> = ({ learner, onMessage }) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":
@@ -34,12 +34,12 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
   };
 
   const handleViewProfile = () => {
-    console.log(`Viewing profile for ${mentee.name}`);
+    console.log(`Viewing profile for ${learner.name}`);
   };
 
   const handleMessage = () => {
     if (onMessage) {
-      onMessage(mentee);
+      onMessage(learner);
     }
   };
 
@@ -48,12 +48,12 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
       <div className="flex items-center space-x-3 mb-4">
         <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
           <span className="text-gray-600 font-medium">
-            {getInitials(mentee.name)}
+            {getInitials(learner.name)}
           </span>
         </div>
         <div>
-          <h3 className="font-medium text-gray-900">{mentee.name}</h3>
-          <p className="text-sm text-gray-500">{mentee.program}</p>
+          <h3 className="font-medium text-gray-900">{learner.name}</h3>
+          <p className="text-sm text-gray-500">{learner.program}</p>
         </div>
       </div>
 
@@ -61,30 +61,30 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
         <div>
           <div className="flex justify-between text-sm mb-1">
             <span className="text-gray-600">Progress</span>
-            <span className="font-medium">{mentee.progress}%</span>
+            <span className="font-medium">{learner.progress}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
               className={`h-2 rounded-full ${getProgressColor(
-                mentee.progress
+                learner.progress
               )}`}
-              style={{ width: `${mentee.progress}%` }}
+              style={{ width: `${learner.progress}%` }}
             ></div>
           </div>
         </div>
 
         <div className="text-sm">
           <p className="text-gray-600">Next Session:</p>
-          <p className="font-medium">{mentee.nextSession}</p>
+          <p className="font-medium">{learner.nextSession}</p>
         </div>
 
         <div className="flex justify-between items-center">
           <span
             className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
-              mentee.status
+              learner.status
             )}`}
           >
-            {mentee.status}
+            {learner.status}
           </span>
           <div className="flex space-x-2">
             <button
@@ -106,4 +106,4 @@ const MenteeCard: React.FC<MenteeCardProps> = ({ mentee, onMessage }) => {
   );
 };
 
-export default MenteeCard;
+export default LearnerCard;

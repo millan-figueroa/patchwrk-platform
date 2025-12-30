@@ -30,7 +30,7 @@ const ScheduleTab: React.FC = () => {
     {
       id: 3,
       time: "4:30 PM",
-      title: "Weekly Alumni Meeting",
+      title: "Weekly Mentor Meeting",
       mentee: "",
       type: "meeting",
       status: "pending",

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Learner } from "../types";
+import type { Learner } from "../../../../shared/types/entities";
 
 interface LearnerCardProps {
   learner: Learner;

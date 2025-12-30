@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Learner } from "../types";
+import type { Learner } from "../../../../shared/types/entities";
 
 interface Message {
   id: number;

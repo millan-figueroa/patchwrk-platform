@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import MentorHeader from "../../components/Mentor/MentorHeader";
-import NavBar from "../../components/common/SideNav";
+import MentorHeader from "../components/MentorHeader";
+import NavBar from "../../../components/common/SideNav";
 // import type { Tab } from "../../components/common/types";
-import DashboardTab from "../../components/Mentor/tabs/DashboardTab";
-import MentoringTab from "../../components/Mentor/tabs/MentoringTab";
-import ScheduleTab from "../../components/Mentor/tabs/ScheduleTab";
-import ResourcesTab from "../../components/Mentor/tabs/ResourcesTab";
-import ProfileTab from "../../components/Mentor/tabs/ProfileTab";
-import navigationConfig from "../../data/navigationConfig.json";
-import { TutorProfile } from "../../components/Mentor/MentorDetails";
+import DashboardTab from "../components/tabs/DashboardTab";
+import MentoringTab from "../components/tabs/MentoringTab";
+import ScheduleTab from "../components/tabs/ScheduleTab";
+import ResourcesTab from "../components/tabs/ResourcesTab";
+import ProfileTab from "../components/tabs/ProfileTab";
+import navigationConfig from "../../../data/navigationConfig.json";
+import { TutorProfile } from "../components/MentorDetails";
 
-import { testTutor1 } from "../../components/types/user-types";
+import { testTutor1 } from "../../../components/types/user-types";
 
 interface MentorProps {
   username?: string;

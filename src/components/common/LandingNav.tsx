@@ -68,10 +68,10 @@ export default function LandingNav() {
               </button>
 
               <button
-                onClick={() => navigate("/alumni/dashboard")}
+                onClick={() => navigate("/mentor/dashboard")}
                 className="w-full px-4 py-3 text-left text-sm hover:bg-indigo-50 transition"
               >
-                Alumni
+                Mentor
               </button>
 
               <button

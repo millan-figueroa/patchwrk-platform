@@ -7,7 +7,7 @@ import LearnerSignup, {
   type LearnerSignupForm,
 } from "./pages/signup/LearnerSignup";
 import LearnerPreferences from "./pages/signup/LearnerPreferences";
-import Alumni from "./pages/Alumni";
+import Alumni from "./pages/Mentor";
 import AlumniSignup, {
   type AlumniSignupForm,
 } from "./pages/signup/AlumniSignup";

@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import heroImage from "../assets/hero1.jpg";
 import { GraduationCap, Users, LayoutList } from "lucide-react";

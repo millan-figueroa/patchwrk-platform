@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Users, BookOpen, Calendar, Inbox, TrendingUp } from "lucide-react";
+import { Users, BookOpen, Calendar, Inbox } from "lucide-react";
 import AdminHeader from "./AdminHeader";
 
 interface StatCardProps {

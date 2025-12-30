@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Type definitions
 interface StudentTopic {
@@ -47,69 +47,69 @@ interface StudentProps {
 }
 
 // Test data
-const alg2testTopic: StudentTopic = {
-  topic: "Algebra II",
-  topicId: "I00001",
-  category: "Mathematics",
-  grade: 72.5,
-  tutorId: "T00001",
-};
+// const alg2testTopic: StudentTopic = {
+//   topic: "Algebra II",
+//   topicId: "I00001",
+//   category: "Mathematics",
+//   grade: 72.5,
+//   tutorId: "T00001",
+// };
 
-const calc1testTopic: StudentTopic = {
-  topic: "Calculus I",
-  topicId: "I00002",
-  category: "Mathematics",
-  grade: 63.0,
-  tutorId: "T00001",
-};
+// const calc1testTopic: StudentTopic = {
+//   topic: "Calculus I",
+//   topicId: "I00002",
+//   category: "Mathematics",
+//   grade: 63.0,
+//   tutorId: "T00001",
+// };
 
-const stat3testTopic: StudentTopic = {
-  topic: "Statistics III",
-  topicId: "I00003",
-  category: "Mathematics",
-  grade: 87.5,
-  tutorId: "T00002",
-};
+// const stat3testTopic: StudentTopic = {
+//   topic: "Statistics III",
+//   topicId: "I00003",
+//   category: "Mathematics",
+//   grade: 87.5,
+//   tutorId: "T00002",
+// };
 
-const testAvail1: ScheduleAvailability = {
-  day: "Monday",
-  time: 13,
-};
+// const testAvail1: ScheduleAvailability = {
+//   day: "Monday",
+//   time: 13,
+// };
 
-const testAvail2: ScheduleAvailability = {
-  day: "Monday",
-  time: 14,
-};
+// const testAvail2: ScheduleAvailability = {
+//   day: "Monday",
+//   time: 14,
+// };
 
-const testAvail3: ScheduleAvailability = {
-  day: "Monday",
-  time: 15,
-};
+// const testAvail3: ScheduleAvailability = {
+//   day: "Monday",
+//   time: 15,
+// };
 
-const testLesson1: ScheduleBlock = {
-  id: "L00001",
-  day: "2025-12-15",
-  time: 13,
-  studentId: "S00001",
-  tutorId: "T00001",
-  status: "scheduled",
-  topicId: "I00001",
-};
+// const testLesson1: ScheduleBlock = {
+//   id: "L00001",
+//   day: "2025-12-15",
+//   time: 13,
+//   studentId: "S00001",
+//   tutorId: "T00001",
+//   status: "scheduled",
+//   topicId: "I00001",
+// };
 
-const testStudentAward: StudentAward = {
-  topic: "I00003",
-  type: "Most improved",
-};
+// const testStudentAward: StudentAward = {
+//   topic: "I00003",
+//   type: "Most improved",
+// };
 
-const testStudent1: StudentProps = {
-  nameFirst: "Paul",
-  nameLast: "Dirac",
-  studentId: "S00001",
-  subjects: [alg2testTopic, calc1testTopic, stat3testTopic],
-  availability: [testAvail1, testAvail2, testAvail3],
-  scheduledLessons: [testLesson1],
-  awards: [testStudentAward],
-};
+// const testStudent1: StudentProps = {
+//   nameFirst: "Paul",
+//   nameLast: "Dirac",
+//   studentId: "S00001",
+//   subjects: [alg2testTopic, calc1testTopic, stat3testTopic],
+//   availability: [testAvail1, testAvail2, testAvail3],
+//   scheduledLessons: [testLesson1],
+//   awards: [testStudentAward],
+// };
 
 // Topic component with expand/collapse
 const TopicItem = ({ topic }: { topic: StudentTopic }) => {

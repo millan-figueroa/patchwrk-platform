@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AlumniHeader from "../../components/Alumni/AlumniHeader";
 import NavBar from "../../components/common/SideNav";
-import type { Tab } from "../../components/common/types";
+// import type { Tab } from "../../components/common/types";
 import DashboardTab from "../../components/Alumni/tabs/DashboardTab";
 import MentoringTab from "../../components/Alumni/tabs/MentoringTab";
 import ScheduleTab from "../../components/Alumni/tabs/ScheduleTab";
@@ -22,11 +22,11 @@ const Alumni: React.FC<AlumniProps> = ({ username }) => {
   );
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
 
-  const tabs: Tab[] = navigationConfig.alumni.tabs.map((t: any) => ({
-    id: t.id ?? t.key, // convert key → id
-    label: t.label,
-    icon: t.icon,
-  }));
+  // const tabs: Tab[] = navigationConfig.alumni.tabs.map((t: any) => ({
+  //   id: t.id ?? t.key, // convert key → id
+  //   label: t.label,
+  //   icon: t.icon,
+  // }));
 
   const renderContent = () => {
     switch (activeTab) {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import aiChatData from "../../data/aiChatData.json";
+import aiChatData from "../../../data/aiChatData.json";
 
 interface Message {
   id: string;

@@ -24,7 +24,7 @@ const MentorHeader: React.FC<MentorHeaderProps> = ({
               A
             </div>
             <h1 className="text-lg font-semibold text-white tracking-wide">
-              Mentor Mentor Dashboard
+              Mentor Dashboard
             </h1>
           </div>
 

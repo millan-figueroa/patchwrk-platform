@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import SideNav from "../../../components/common/SideNav";
 import navigationConfig from "../../../data/navigationConfig.json";
-
-import DashboardTab from "../../mentor/components/tabs/DashboardTab";
+import LearnerHome from "../components/tabs/LearnerHome";
+// import DashboardTab from "../../mentor/components/tabs/DashboardTab";
 import Help from "../components/tabs/HelpTab";
 import LearnerSchedule from "../components/tabs/ScheduleTab";
 import LearnerProfile from "../components/tabs/ProfileTab";
 import Resources from "../components/tabs/ResourcesTab";
 import LearnerHeader from "../components/LearnerHeader";
-import AIChatAssistant from "../../../components/common/AIChatAssistant";
+import AIChatAssistant from "../components/AIChatAssistant";
 import { LearnerDetails } from "../components/tabs/DetailsTab";
 
-import { testStudent1 } from "../../../components/types/user-types";
+import { testStudent1 } from "../../../shared/types/user-types";
 
 interface LearnerProps {
   username?: string;
@@ -26,7 +26,7 @@ const LearnerDashboard: React.FC<LearnerProps> = ({ username }) => {
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <DashboardTab />;
+        return <LearnerHome />;
       case "help":
         return <Help />;
       case "schedule":

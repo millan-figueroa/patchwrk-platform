@@ -3,7 +3,7 @@ import StatsGrid from "./StatsGrid";
 import PendingRequests from "./PendingRequests";
 import TodaySessions from "./TodaySessions";
 
-const DashboardTab: React.FC = () => {
+const MentorHome: React.FC = () => {
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-900">
@@ -16,4 +16,4 @@ const DashboardTab: React.FC = () => {
   );
 };
 
-export default DashboardTab;
+export default MentorHome;

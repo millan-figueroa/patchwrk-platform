@@ -50,3 +50,7 @@ tutor ranking - top tutor/ stuents that need help
 tutors can assign students grades adn ranking
 
 stretch goal
+
+1/2: Refactored codebase to only use menor/ learner terms, updated all files, made sure everything is working. created new file system and organized all files. 
+-next: cleanup phase 3: delete all unecessary code (types, interfaces etc.)
+-refactor learner dashboard, move ai chat assistant to corner

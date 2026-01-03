@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MentorHeader from "../components/MentorHeader";
 import NavBar from "../../../components/common/SideNav";
 // import type { Tab } from "../../components/common/types";
-import DashboardTab from "../components/tabs/DashboardTab";
+import MentorHome from "../components/tabs/MentorHome";
 import MentoringTab from "../components/tabs/MentoringTab";
 import ScheduleTab from "../components/tabs/ScheduleTab";
 import ResourcesTab from "../components/tabs/ResourcesTab";
@@ -10,8 +10,7 @@ import ProfileTab from "../components/tabs/ProfileTab";
 import navigationConfig from "../../../data/navigationConfig.json";
 import { TutorProfile } from "../components/MentorDetails";
 
-import { testTutor1 } from "../../../components/types/user-types";
-
+import { testTutor1 } from "../../../shared/types/user-types";
 interface MentorProps {
   username?: string;
 }
@@ -31,7 +30,7 @@ const Mentor: React.FC<MentorProps> = ({ username }) => {
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <DashboardTab />;
+        return <MentorHome />;
       case "mentoring":
         return <MentoringTab />;
       case "schedule":

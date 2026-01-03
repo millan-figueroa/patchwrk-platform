@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MentorHeader from "../components/MentorHeader";
-import SideNav from "../../../components/SideNav";
+import SideNav from "../../../shared/components/SideNav";
 // import type { Tab } from "../../components/common/types";
 import MentorHome from "../components/tabs/MentorHomeTab";
 import MentoringTab from "../components/tabs/MyLearnersTab";

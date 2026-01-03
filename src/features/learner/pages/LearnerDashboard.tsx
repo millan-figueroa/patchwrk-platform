@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideNav from "../../../components/SideNav";
+import SideNav from "../../../shared/components/SideNav";
 import navigationConfig from "../../../data/navigationConfig.json";
 import LearnerHome from "../components/tabs/LearnerHomeTab";
 import Help from "../components/tabs/HelpTab";

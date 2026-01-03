@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import heroImage from "../assets/hero1.jpg";
 import { GraduationCap, Users, LayoutList } from "lucide-react";
-import LandingNav from "../components/LandingNav";
+import LandingNav from "../shared/components/LandingNav";
 
 export default function LandingPage() {
   const navigate = useNavigate();

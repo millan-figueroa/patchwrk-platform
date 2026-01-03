@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Users, BookOpen, Calendar, Inbox } from "lucide-react";
-import AdminHeader from "./AdminHeader";
+import AdminHeader from "../components/AdminHeader";
 
 interface StatCardProps {
   title: string;

@@ -13,7 +13,7 @@ import MentorSignup, {
 } from "./pages/signup/MentorSignup";
 import MentorPreferences from "./pages/signup/MentorPreferences";
 
-import AdminDashboard from "./features/admin/AdminDashboard";
+import AdminDashboard from "./features/admin/pages/AdminDashboard";
 import type { MentorRegistration } from "./shared/types/registration";
 
 const STORAGE_KEY = "learner-registration";
